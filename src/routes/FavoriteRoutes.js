@@ -1,0 +1,8 @@
+const router = require('express').Router()
+const favoriteController = require('../controllers/FavoriteController')
+const verifyToken = require('../helpers/verify-token')
+
+router.post('/add', verifyToken, favoriteController.addFavorite)
+router.delete('/delete', verifyToken, favoriteController.deleteFavorite)
+
+module.exports = router;
