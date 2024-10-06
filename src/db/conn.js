@@ -1,21 +1,14 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-// Usando a variável de ambiente definida no Heroku
-const uri = process.env.MONGODB_URI;
+dotenv.config(); // Carrega as variáveis de ambiente
 
-async function main() {
-  try {
-    if (!uri) {
-      throw new Error('MongoDB URI não definida nas variáveis de ambiente');
-    }
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Conectado ao MongoDB");
-  } catch (error) {
-    console.error("Erro de conexão:", error);
-  }
-}
+const mongoURI = process.env.MONGODB_URI; // Substitua pelo seu URI
 
-main();
+// Conectando ao MongoDB
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Conectado ao MongoDB"))
+  .catch(err => console.error("Erro ao conectar ao MongoDB:", err));
+
+// Exportando a instância do mongoose
+module.exports = mongoose;
