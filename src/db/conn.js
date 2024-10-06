@@ -2,9 +2,7 @@ const mongoose = require('mongoose')
 
 
 async function main() {
-  await mongoose.connect('mongodb+srv://nexus:nexus@cluster0.oida7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
-
-  }) 
+  await mongoose.connect("mongodb+srv://nexus:nexus@cluster0.oida7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   console.log("Conectou ao Mongoose")
 }
 
