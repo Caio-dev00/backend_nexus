@@ -1,14 +1,12 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const mongoose = require('mongoose')
 
-dotenv.config(); // Carrega as variáveis de ambiente
+async function main() {
+  await mongoose.connect('mongodb+srv://nexus:nexus@cluster0.oida7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
 
-const mongoURI = process.env.MONGODB_URI; // Substitua pelo seu URI
+  }) 
+  console.log("Conectou ao Mongoose")
+}
 
-// Conectando ao MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Conectado ao MongoDB"))
-  .catch(err => console.error("Erro ao conectar ao MongoDB:", err));
+main().catch((err) => console.log(err))
 
-// Exportando a instância do mongoose
-module.exports = mongoose;
+module.exports = mongoose
