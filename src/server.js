@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get("/", (req, res) => {
-  return res.json({ message: "Seja BEMVINDO"})
+  return res.json({ message: "Seja Bem-Vindo à nexusapi"})
 })
 
 app.use('/users', userRoutes)
