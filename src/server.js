@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const PORT = process.env.PORT || 3333
 
 const userRoutes = require('./routes/UserRoutes')
 const favoriteRoutes = require('./routes/FavoriteRoutes')
@@ -18,4 +19,4 @@ app.use('/favorites', favoriteRoutes)
 app.use('/conversion', conversionRoutes)
 
 
-app.listen(3333, () => console.log("Server Online"))
+app.listen(PORT, () => console.log("Server Online" + PORT))
