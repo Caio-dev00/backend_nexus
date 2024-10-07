@@ -1,4 +1,4 @@
-const Conversion = require('../models/Conversion'); // Supondo que você tenha um modelo para conversões
+const Conversion = require('../models/Conversion');
 
 const HistoryController = {
   getHistory: async (req, res) => {

@@ -1,7 +1,7 @@
-const mongoose = require('../db/conn'); // Certifique-se de que está apontando para o arquivo correto
-const { Schema } = mongoose; // Desestruturação correta
+const mongoose = require('../db/conn');
+const { Schema } = mongoose; 
 
-// Definindo o modelo User
+
 const User = mongoose.model(
   'User',
   new Schema({
@@ -18,7 +18,7 @@ const User = mongoose.model(
       required: true
     },
     favorites: [{
-      type: Schema.Types.ObjectId, // Isso deve funcionar se a importação estiver correta
+      type: Schema.Types.ObjectId, 
       ref: 'Favorite'
     }]
   }, { timestamps: true })
