@@ -2,6 +2,11 @@ const jwt = require('jsonwebtoken')
 const getToken = require('./get-token.js')
 
 const verifyToken = (req, res, next) => {
+
+  if (req.path === '/conversion/convert') {
+    return next(); 
+  }
+
   if(!req.headers.authorization) {
     return res.status(401).json({ message: 'Acesso negado' })
   }

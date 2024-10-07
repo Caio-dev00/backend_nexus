@@ -6,7 +6,8 @@ const axios = require('axios')
 module.exports = class ConversionController {
   static async convert(req, res) {
     try {
-      const { userId, cryptocurrencyId, amount } = req.body;
+      const { cryptocurrencyId, amount } = req.body;
+      const userId = req.user.id;
 
       if (!mongoose.Types.ObjectId.isValid(userId)) {
         return res.status(400).json({ message: 'ID de usuário inválido' });
@@ -40,6 +41,7 @@ module.exports = class ConversionController {
         await conversion.save()
 
         return res.status(200).json({
+          userId,
           cryptocurrencyId,
           amount,
           convertedBrl,
