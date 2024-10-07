@@ -77,4 +77,25 @@ module.exports = class FavoriteController {
       res.status(500).json({ message: 'Erro ao remover favorito', error: error.message });
     }
   }
+
+  static async getFavorites(req, res) {
+    try {
+      const userId = req.user.id; // Acesse o ID do usuário a partir do objeto 'req.user'
+  
+      if (!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).json({ message: 'ID de usuário inválido' });
+      }
+  
+      const userObjectId = new mongoose.Types.ObjectId(userId);
+  
+      // Buscar todos os favoritos do usuário
+      const favorites = await Favorite.find({ user: userObjectId });
+  
+      return res.status(200).json(favorites);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao buscar favoritos', error: error.message });
+    }
+  }
+  
 }
