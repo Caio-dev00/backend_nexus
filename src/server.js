@@ -9,7 +9,11 @@ const conversionRoutes = require('./routes/ConversionRoutes')
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'], 
+  credentials: true,
+}))
 
 app.get("/", (req, res) => {
   return res.json({ message: "Seja Bem-Vindo à nexusapi"})
