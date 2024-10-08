@@ -10,8 +10,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-  origin: 'https://nexuscripto.vercel.app/',
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'], 
+  origin: 'https://nexuscripto.vercel.app',
   credentials: true,
 }))
 
